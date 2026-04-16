@@ -1,11 +1,11 @@
 <article class="tarjeta">
 	<p class="tarjeta__label">Tarjeta de presentación</p>
 
-	<h2 class="tarjeta__nombre">{{ nombre }}</h2>
-	<p class="tarjeta__edad">Edad: {{ edad }} años</p>
+	<h2 class="tarjeta__nombre">{{ name }}</h2>
+	<p class="tarjeta__edad">Edad: {{ age }} años</p>
 
 	<div class="tarjeta__acciones">
-		<button type="button" (click)="incrementarLikes()">Me gusta</button>
+		<button type="button" (click)="incrementarLikes()">Like</button>
 		<span>{{ likes }} likes</span>
 	</div>
 </article>

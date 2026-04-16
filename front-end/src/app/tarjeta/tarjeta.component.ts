@@ -7,8 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './tarjeta.component.css'
 })
 export class TarjetaComponent {
-  @Input() nombre = 'Tu nombre';
-  @Input() edad = 0;
+  @Input() name = 'Tu nombre';
+  @Input() age = 0;
 
   likes = 0;
 
