@@ -1,0 +1,14 @@
+<main class="app-shell">
+  <nav class="nav">
+    <a routerLink="/pagina-1" routerLinkActive="active">1</a>
+    <a routerLink="/pagina-2" routerLinkActive="active">2</a>
+    <a routerLink="/pagina-3" routerLinkActive="active">3</a>
+    <a routerLink="/pagina-4" routerLinkActive="active">4</a>
+  </nav>
+
+  <section class="content">
+    <router-outlet></router-outlet>
+    <app-tarjeta nombre="Gael Borchardt" [edad]="21"></app-tarjeta>
+  </section>
+
+</main>
