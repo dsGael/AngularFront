@@ -1,0 +1,101 @@
+<div class="galeria-container">
+  <!-- Encabezado -->
+  <div class="galeria-header">
+    <h1>Galería de Fotos</h1>
+    <div class="contador-likes">
+      <span class="contador-icon">❤️</span>
+      <span class="contador-valor">Total de Likes: {{ contadorTotal }}</span>
+    </div>
+  </div>
+
+  <!-- Botón para agregar fotos -->
+  <button 
+    class="btn-agregar" 
+    (click)="toggleFormulario()"
+    [class.activo]="mostrarFormulario">
+    {{ mostrarFormulario ? '✕ Cerrar' : '+ Agregar Foto' }}
+  </button>
+
+  <!-- Formulario para agregar fotos -->
+  <div class="formulario-container" *ngIf="mostrarFormulario" [@slideDown]>
+    <form (ngSubmit)="agregarFoto()" class="formulario">
+      <div class="form-group">
+        <label for="urlFoto">URL de la Foto:</label>
+        <input
+          type="text"
+          id="urlFoto"
+          [(ngModel)]="urlFoto"
+          (change)="validarFormulario()"
+          name="urlFoto"
+          placeholder="https://ejemplo.com/imagen.jpg"
+          class="form-input"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tituloFoto">Título:</label>
+        <input
+          type="text"
+          id="tituloFoto"
+          [(ngModel)]="tituloFoto"
+          (change)="validarFormulario()"
+          name="tituloFoto"
+          placeholder="Nombre de la foto"
+          class="form-input"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="!formularioValido"
+      >
+        Agregar Foto
+      </button>
+    </form>
+  </div>
+
+  <!-- Grid de Fotos -->
+  <div class="fotos-grid" *ngIf="fotosDisponibles; else sinFotos">
+    <div class="foto-card" *ngFor="let foto of fotos">
+      <div class="foto-imagen-container">
+        <img
+          [src]="foto.url"
+          [alt]="foto.titulo"
+          class="foto-imagen"
+          (error)="onImageError($event)"
+        />
+        <div class="foto-overlay">
+          <button
+            class="btn-eliminar"
+            (click)="eliminarFoto(foto.id)"
+            title="Eliminar foto"
+          >
+            🗑️
+          </button>
+        </div>
+      </div>
+
+      <div class="foto-info">
+        <h3 class="foto-titulo">{{ foto.titulo }}</h3>
+        <div class="foto-acciones">
+          <button
+            class="btn-like"
+            (click)="darLike(foto.id)"
+          >
+            <span class="like-icon">❤️</span>
+            <span class="like-count">{{ foto.likes }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje cuando no hay fotos -->
+  <ng-template #sinFotos>
+    <div class="sin-fotos">
+      <p class="sin-fotos-mensaje">📷 No hay fotos en la galería</p>
+      <p class="sin-fotos-subtexto">¡Agrega tu primera foto para comenzar!</p>
+    </div>
+  </ng-template>
+</div>

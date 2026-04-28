@@ -1,5 +1,6 @@
 <main class="app-shell">
   <nav class="nav">
+    <a routerLink="/galeria" routerLinkActive="active">Galería</a>
     <a routerLink="/pagina-1" routerLinkActive="active">1</a>
     <a routerLink="/pagina-2" routerLinkActive="active">2</a>
     <a routerLink="/pagina-3" routerLinkActive="active">3</a>
@@ -8,10 +9,7 @@
 
   <section class="content">
     <router-outlet></router-outlet>
-    <app-tarjeta name="Gael Borchardt" [age]="21"></app-tarjeta>
     
-    <app-tarjeta name="yorch" [age]="12"></app-tarjeta>
-
   </section>
 
 </main>
